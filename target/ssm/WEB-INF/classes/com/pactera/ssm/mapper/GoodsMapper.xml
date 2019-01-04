@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pactera.ssm.mapper.GoodsDao">
+	<select id="getGoodsPager"
+		parameterType="com.pactera.ssm.entities.Goods"
+		resultType="com.pactera.ssm.entities.Goods">
+		SELECT * from goods LIMIT #{start},#{size}
+	</select>
+	<select id="getGoodsById"
+		parameterType="com.pactera.ssm.entities.Goods"
+		resultType="com.pactera.ssm.entities.Goods">
+		SELECT * from goods WHERE id=${id}
+	</select>
+	<delete id="deleteById"
+		parameterType="com.pactera.ssm.entities.Goods">
+		DELETE FROM goods WHERE id=#{id}
+	</delete>
+</mapper>

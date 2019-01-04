@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pactera.ssm.mapper.UserDao">
+	<select id="getUserInfoByUsername"
+		parameterType="String"
+		resultType="com.pactera.ssm.entities.UserInfo">
+		SELECT * from userinfo where username=#{username}
+	</select>
+	<insert id="addUserInfo"
+		parameterType="com.pactera.ssm.entities.UserInfo">
+		INSERT INTO userinfo (username, password) VALUES (#{username},
+		#{password});
+	</insert>
+	<delete id="deleteUserInfo"
+		parameterType="com.pactera.ssm.entities.UserInfo">
+		DELETE FROM userinfo WHERE employeeno=#{employeeno}
+	</delete>
+		<update id="saveUserInfo"
+		parameterType="com.pactera.ssm.entities.UserInfo">
+		UPDATE userinfo SET
+		password=#{password},username=#{username} WHERE employeeno=#{employeeno}
+	</update>
+		<select id="getUserInfoByEmployeeno"
+		parameterType="int"
+		resultType="com.pactera.ssm.entities.UserInfo">
+		SELECT * from userinfo WHERE employeeno=#{employeeno}
+	</select>
+	
+	<select id="getGoodsById"
+		parameterType="com.pactera.ssm.entities.Goods"
+		resultType="com.pactera.ssm.entities.Goods">
+		SELECT * from goods WHERE id=${id}
+	</select>
+	<delete id="deleteById"
+		parameterType="com.pactera.ssm.entities.Goods">
+		DELETE FROM goods WHERE id=#{id}
+	</delete>
+	<update id="saveGoods"
+		parameterType="com.pactera.ssm.entities.Goods">
+		UPDATE goods SET
+		price=#{price},name=#{name},picture=#{picture} WHERE id=#{id};
+	</update>
+	<insert id="addGoods"
+		parameterType="com.pactera.ssm.entities.Goods">
+		INSERT INTO goods (name, price) VALUES (#{name},
+		#{price});
+	</insert>
+	<select id="getGoodsCount" resultType="int">
+		select count(1) from goods
+	</select>
+</mapper>
